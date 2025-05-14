@@ -1,9 +1,22 @@
-import math
+import numpy as np
 
 
-def relu(x) -> int:
-    return (x + abs(x)) / 2
+class ReLU:
+    @staticmethod
+    def forward(x: float) -> float:
+        # return np.maximum(x, 0)
+        return float((x + abs(x)) / 2)
+
+    @staticmethod
+    def backward(x: float) -> float:
+        return float(x > 0)
 
 
-def sigmoid(x) -> int:
-    return 1 / (1 + math.exp(-x))
+class Sigmoid:
+    @staticmethod
+    def forward(x: float) -> float:
+        return float(1 / (1 + np.exp(-x)))
+
+    @staticmethod
+    def backward(x: float) -> float:
+        return float(x * (1 - x))
