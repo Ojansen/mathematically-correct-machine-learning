@@ -26,5 +26,6 @@ print(a2)
 
 # Hidden layer 1 -> Output layer
 z3 = a2 @ W3.transpose() + b3
+print(z3)
 a3 = Sigmoid.forward(z3)
 print(a3)
