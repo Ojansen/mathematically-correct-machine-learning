@@ -14,3 +14,17 @@ class Loss:
 
     def root_mean_squared_error(self) -> float:
         return float(np.sqrt(np.mean((self.pred - self.target) ** 2) / self.pred.size))
+
+    def xlogy(self, x: np.ndarray, y: np.ndarray):
+        return x * np.log(y)
+
+    def binary_crossentropy(self) -> float:
+        return (
+            np.sum(
+                -(
+                    self.xlogy(self.target, self.pred)
+                    + self.xlogy(1 - self.target, 1 - self.pred)
+                )
+            )
+            / self.pred.size
+        )
